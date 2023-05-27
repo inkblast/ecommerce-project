@@ -1,14 +1,21 @@
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import Header from "../components/Header";
+import AdminBoard from '../containers/Dashboard/AdminBoard';
+import Product from '../components/Product/Product';
 
-export default function Routs() {
+
+function Routs() {
   return (
-    <BrowserRouter>
+    <>
+    <Router>
       <Routes>
-        <Route exact path="/header" component={Header} />
+        <Route path="/" element={<AdminBoard /> } />
+        <Route path="/product" element={<Product /> } />
       </Routes>
-    </BrowserRouter>
+    </Router>
+    </>
   );
 }
+
+export default Routs;

@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import Product from "../components/Product";
+import Product from "../components/Product/Product";
 import Deliveries from "../components/Deliveries";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import Typography from "@mui/material/Typography";
