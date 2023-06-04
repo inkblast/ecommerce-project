@@ -17,12 +17,13 @@ function Addproduct()
 
     const [product_name, setProduct_name] = useState("")
     const [product_details, setProduct_details] = useState("")
+    const [category_id, setCategory_id] = useState()
 
     const add = async () => {
         let formField = new FormData()
-
-        formField.append('product_name', product_name)
-        formField.append('product_details', product_details)
+        formField.append('category_id', category_id)
+        formField.append('name', product_name)
+        formField.append('description', product_details)
 
         await axios({
             method: 'post',
@@ -55,7 +56,15 @@ function Addproduct()
                    border: "1px solid black",
                     paddingTop:3,
                    boxShadow:'0px 0px 8px rgba(0,0,0,0.5)',}}>
-                 <h1 style={{m:10}}>Add Product</h1> 
+                 <h1 style={{m:10}}>Add Product</h1>
+                 <FormControl sx={{ mt:2}}>
+                         <InputLabel>Category ID</InputLabel>
+                         <Input
+                         type="text" 
+                         name="category_id" 
+                         value={category_id}
+                         onChange={(e)=>setCategory_id(e.target.value)} />
+                     </FormControl> 
                      <FormControl sx={{ mt:2}}>
                          <InputLabel>Product Name</InputLabel>
                          <Input
