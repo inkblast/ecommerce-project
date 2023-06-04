@@ -90,7 +90,7 @@ function Addproduct()
                     </ModalBody>
                 </Modal>
             </div>
-            <Button color="primary" variant="contained" onClick={()=>setModal(true)} sx={{ m:3  }} startIcon={<AddShoppingCartIcon />}>Add Product</Button>
+            <Button style={{backgroundColor:'#448aff', color: 'white',}} variant="contained" onClick={()=>setModal(true)} sx={{ m:3  }} startIcon={<AddShoppingCartIcon />}>Add Product</Button>
         </div>
     );
 }

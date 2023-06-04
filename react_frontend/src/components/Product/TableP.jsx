@@ -84,46 +84,46 @@ function TableP()
               m: 'auto'}} 
               aria-label="simple table">
         <TableHead>
-          <TableRow align="center">
-            <TableCell>Product ID</TableCell>
-            <TableCell>Category ID</TableCell>
-            <TableCell  >Product Name</TableCell>
-            <TableCell >Product Details</TableCell>
-            <TableCell >Action</TableCell>
+          <TableRow>
+            <TableCell align="center" style={{backgroundColor:'#e8eaf6', color: 'black',}}>Product ID</TableCell>
+            <TableCell align="center" style={{backgroundColor:'#e8eaf6', color: 'black',}}>Category ID</TableCell>
+            <TableCell align="center" style={{backgroundColor:'#e8eaf6', color: 'black',}}>Product Name</TableCell>
+            <TableCell align="center" style={{backgroundColor:'#e8eaf6', color: 'black',}}>Product Details</TableCell>
+            <TableCell align="center" style={{backgroundColor:'#e8eaf6', color: 'black',}}>Action</TableCell>
           </TableRow>
         </TableHead>
-        <TableBody>
+        <TableBody >
         {details.map((product, index) => ( 
           product.id === editId ?
             <TableRow
             key={index}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
-              <TableCell component="th" scope="row" sx={{ mx:7 }}>
+              <TableCell component="th" scope="row" align="center" width="125px">
               {product.id}
               </TableCell>
-              <TableCell component="th" scope="row" sx={{ mx:7 }}>
+              <TableCell component="th" scope="row" align="center" width="150px">
               <Input
                 type="text"
                 value={editCid}
                 onChange={(e)=>setCid(e.target.value)} 
                 />
               </TableCell>
-              <TableCell align="right" style= {{width:200}}sx ={{ mx:7}}>
+              <TableCell  align="center" width="300px">
                 <Input
                 type="text"
                 value={uproduct_name}
                 onChange={(e)=>setProduct_name(e.target.value)} 
                 />
               </TableCell>
-              <TableCell align="right" sx={{ mx:7 }}>
+              <TableCell align="center" width="500px">
                 <Input
                 type="text"
                 value={uproduct_details}
                 onChange={(e)=>setProduct_details(e.target.value)}
                 />
               </TableCell>
-              <TableCell align="right" sx={{ mx:6 }}><Button color="success" variant="outlined" onClick={()=>handleUpdate()}  startIcon={<DoneIcon />}>Done</Button>
+              <TableCell  align="center"><Button color="success" variant="outlined" onClick={()=>handleUpdate()}  startIcon={<DoneIcon />}>Done</Button>
               </TableCell>
             </TableRow>
             :
@@ -131,11 +131,11 @@ function TableP()
             key={index}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
-              <TableCell component="th" scope="row" xs={2}>{product.id}</TableCell>
-              <TableCell align="right" style= {{}}sx ={{}}>{product.category_id}</TableCell>
-              <TableCell align="right" style= {{width:200}}sx ={{ }}>{product.name}</TableCell>
-              <TableCell align="right" sx={{ mx:7 }}>{product.description}</TableCell>
-              <TableCell align="right" sx={{ mx:6 }}><Button color="success" variant="outlined" onClick={()=>updateProduct(product.id,product.category_id)}  startIcon={<EditIcon />}>Update</Button>
+              <TableCell component="th" scope="row" align="center" width="125px">{product.id}</TableCell>
+              <TableCell align="center"  width="150px">{product.category_id}</TableCell>
+              <TableCell align="center" width="300px">{product.name}</TableCell>
+              <TableCell align="center" width="500px">{product.description}</TableCell>
+              <TableCell align="center" sx={{ mx:6 }}><Button color="success" variant="outlined" onClick={()=>updateProduct(product.id,product.category_id)}  startIcon={<EditIcon />}>Update</Button>
                 <Button  color="error" variant="outlined"  onClick={() => deleteProduct(product.id)} startIcon={<ClearIcon />} sx={{ml:2}}>Delete</Button>
               </TableCell>
             </TableRow>
