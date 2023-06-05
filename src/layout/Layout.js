@@ -1,28 +1,14 @@
-import React, { Fragment } from "react";
-import Product from "../components/Product";
-import Deliveries from "../components/Deliveries";
-import DashboardIcon from "@mui/icons-material/Dashboard";
-import Typography from "@mui/material/Typography";
-import { IconButton } from "@mui/material";
-import Stack from "@mui/material/Stack";
+import React from 'react'
+import Header from '../components/Header'
+import LeftDrawer from '../components/LeftDrawer'
 
 function Layout() {
   return (
-    <Fragment>
-      <div style={{ display: "flex" }}>
-        <IconButton>
-          <DashboardIcon style={{ color: "#145DA0" }} />
-        </IconButton>
-        <Typography variant="h4">Dashboard</Typography>
-      </div>
-
-      <Stack direction="row" spacing={2}>
-        <Product />
-        <Deliveries />
-        <Deliveries />
-      </Stack>
-    </Fragment>
-  );
+    <div>
+        <Header />
+        <LeftDrawer />
+    </div>
+  )
 }
 
 export default Layout;
