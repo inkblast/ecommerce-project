@@ -51,6 +51,7 @@ function Addproduct()
                         <FormGroup sx={{
                     width: '40%',
                    height: '75%',
+                   display: 'flex',
                    m: 'auto',
                     p: 10,
                    border: "1px solid black",
