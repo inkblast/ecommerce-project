@@ -11,6 +11,8 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 //import Link from '@mui/material/Link';
 import Button from '@mui/material/Button';
+import {updateStatus} from '../../actions/orderManagementAction'
+import { useSelector } from 'react-redux';
 
 class OrderManagement extends Component {
     constructor(props){
@@ -30,6 +32,7 @@ class OrderManagement extends Component {
         };
         this.handleStatus = this.handleStatus.bind(this)
     }
+    
     async componentDidMount() {
         try {
           const res = await fetch('http://127.0.0.1:8000/api/products/');
@@ -41,8 +44,16 @@ class OrderManagement extends Component {
           console.log(e);
       }
     }
-    handleStatus()
+    handleStatus(e)
     {
+        const {name , value} = e.target;
+        updateStatus();
+        const product = useSelector((state) => state.filter.product);
+        product.map(item , id) => (
+          if(item.product_id == )
+        );
+
+        
 
     }
 
@@ -93,10 +104,10 @@ class OrderManagement extends Component {
                       <TableCell >{item.cust_address}</TableCell>
                       <TableCell >{item.cust_phone}</TableCell>
                       <TableCell > 
-                        <Button name="open" onChange={this.handleStatus}>Open</Button>
-                        <Button name="pending" onChange={this.handleStatus}>Pending</Button>
-                        <Button name="shiped" onChange={this.handleStatus}>Shiped</Button>
-                        <Button name="receive" onChange={this.handleStatus}>Received</Button>
+                        <Button name="open" value={item.product_id} onClick={this.handleStatus}>Open</Button>
+                        <Button name="pending" value={item.product_id}  onClick={this.handleStatus}>Pending</Button>
+                        <Button name="shiped" value={item.product_id} onClick={this.handleStatus}>Shiped</Button>
+                        <Button name="receive" value={item.product_id} onClick={this.handleStatus}>Delivered</Button>
                     </TableCell>
                     </TableRow>
                   ))}
