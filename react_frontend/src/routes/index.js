@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import AdminBoard from '../containers/Dashboard/AdminBoard';
-import Product from '../components/Product/Product';
+import Product from '../containers/Product/Product';
 
 
 function Routs() {

@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Header from '../Header'
-import LeftDrawer from '../LeftDrawer';
+import Header from '../../components/Header'
+import LeftDrawer from '../../components/LeftDrawer';
 import TableP from './TableP';
 
 

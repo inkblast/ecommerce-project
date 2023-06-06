@@ -23,11 +23,19 @@ import PersonIcon from '@mui/icons-material/Person';
 import SettingsIcon from '@mui/icons-material/Settings';
 //import Layout from '../../layout/Layout';
 import DashboardIcon from '@mui/icons-material/Dashboard';
-
+//import AdminBoard from '../../containers/Dashboard/AdminBoard';
 
 const drawerWidth = 240;
 
 function LeftDrawer() {
+  const routes = [
+    "/product",
+    "/deliveries",
+    "/analysis",
+    "/credit-notes",
+    "/order-management",
+    "/stock-management",
+  ];
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
@@ -67,7 +75,7 @@ function LeftDrawer() {
                     {index == 4 ? <EditNoteIcon /> : ''}
                     {index == 5 ? <DescriptionIcon /> : ''}
                   </ListItemIcon>
-                  <Link href="/product" target="_blank"><ListItemText primary={text} /></Link>
+                  <Link href={routes[index]} underline="none"><ListItemText primary={text} /></Link>
                 </ListItemButton>
               </ListItem>
             ))}
@@ -91,9 +99,6 @@ function LeftDrawer() {
           </List>
         </Box>
       </Drawer>
-      {/*<Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-       <Layout />
-       </Box>*/}
     </Box>
   )
 }
