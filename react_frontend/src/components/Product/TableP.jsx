@@ -22,6 +22,7 @@ function TableP()
   const [editCid , setCid] = useState(-1)
   const [uproduct_name,setProduct_name] = useState("")
   const [uproduct_details,setProduct_details] = useState("")
+  const [uquantity, setQuantity] = useState()
 
 
     useEffect(()=>{
@@ -37,6 +38,7 @@ function TableP()
         .then(res =>{
           setProduct_details(res.data.description)
           setProduct_name(res.data.name)
+          setQuantity(res.data.quantity)
         })
         setCid(cid);
         setEditId(id);
@@ -56,7 +58,7 @@ function TableP()
             console.log(response.data);
             location.reload();
         })*/
-      axios.put('http://127.0.0.1:8000/products/'+editId, {category_id:editCid , name:uproduct_name , description:uproduct_details})
+      axios.put('http://127.0.0.1:8000/products/'+editId, {category_id:editCid ,quantity:uquantity ,name:uproduct_name , description:uproduct_details})
       .then(res => {
         console.log(res);
         setEditId(-1);
@@ -89,10 +91,11 @@ function TableP()
             <TableCell align="center" style={{backgroundColor:'#e8eaf6', color: 'black',}}>Category ID</TableCell>
             <TableCell align="center" style={{backgroundColor:'#e8eaf6', color: 'black',}}>Product Name</TableCell>
             <TableCell align="center" style={{backgroundColor:'#e8eaf6', color: 'black',}}>Product Details</TableCell>
+            <TableCell align="center" style={{backgroundColor:'#e8eaf6', color: 'black',}}>Qunatity</TableCell>
             <TableCell align="center" style={{backgroundColor:'#e8eaf6', color: 'black',}}>Action</TableCell>
           </TableRow>
         </TableHead>
-        <TableBody >
+        <TableBody>
         {details.map((product, index) => ( 
           product.id === editId ?
             <TableRow
@@ -123,6 +126,13 @@ function TableP()
                 onChange={(e)=>setProduct_details(e.target.value)}
                 />
               </TableCell>
+              <TableCell align="center" width="300px">
+                <Input
+                type="text"
+                value={uquantity}
+                onChange={(e)=>setQuantity(e.target.value)}
+                />
+              </TableCell>
               <TableCell  align="center"><Button color="success" variant="outlined" onClick={()=>handleUpdate()}  startIcon={<DoneIcon />}>Done</Button>
               </TableCell>
             </TableRow>
@@ -135,6 +145,7 @@ function TableP()
               <TableCell align="center"  width="150px">{product.category_id}</TableCell>
               <TableCell align="center" width="300px">{product.name}</TableCell>
               <TableCell align="center" width="500px">{product.description}</TableCell>
+              <TableCell align="center" width="300px">{product.quantity}</TableCell>
               <TableCell align="center" sx={{ mx:6 }}><Button color="success" variant="outlined" onClick={()=>updateProduct(product.id,product.category_id)}  startIcon={<EditIcon />}>Update</Button>
                 <Button  color="error" variant="outlined"  onClick={() => deleteProduct(product.id)} startIcon={<ClearIcon />} sx={{ml:2}}>Delete</Button>
               </TableCell>

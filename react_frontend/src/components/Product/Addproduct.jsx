@@ -17,6 +17,7 @@ function Addproduct()
 
     const [product_name, setProduct_name] = useState("")
     const [product_details, setProduct_details] = useState("")
+    const [quantity, setQuantity] = useState("")
     const [category_id, setCategory_id] = useState()
 
     const add = async () => {
@@ -24,6 +25,7 @@ function Addproduct()
         formField.append('category_id', category_id)
         formField.append('name', product_name)
         formField.append('description', product_details)
+        formField.append('quantity', quantity)
 
         await axios({
             method: 'post',
@@ -81,6 +83,14 @@ function Addproduct()
                              name="product_details"  
                              value={product_details}
                              onChange={(e)=> setProduct_details(e.target.value)} />
+                      </FormControl>
+                      <FormControl sx={{ mt:2}}>
+                         <InputLabel>Quantity</InputLabel>
+                            <Input
+                            type="text"
+                             name="quantity"  
+                             value={quantity}
+                             onChange={(e)=> setQuantity(e.target.value)} />
                       </FormControl>
                      <FormControl sx={{margin:5}}>
                          <Button variant="contained" color="success" onClick={()=>add()} >Add</Button>
