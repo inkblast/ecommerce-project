@@ -12,7 +12,7 @@ import Paper from "@mui/material/Paper";
 //import Link from '@mui/material/Link';
 import Button from '@mui/material/Button';
 import {updateStatus} from '../../actions/orderManagementAction'
-import { useSelector } from 'react-redux';
+//import { useSelector } from 'react-redux';
 
 class OrderManagement extends Component {
     constructor(props){
@@ -48,11 +48,13 @@ class OrderManagement extends Component {
     {
         const {name , value} = e.target;
         updateStatus();
-        const product = useSelector((state) => state.filter.product);
-        product.map(item , id) => (
+        //const product = useSelector((state) => state.filter.product);
+        console.log(name);
+        console.log(value);
+       {/*} product.map(item , id) => (
           if(item.product_id == )
         );
-
+       */}
         
 
     }
