@@ -3,9 +3,6 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
 
 import TableP from './TableP';
-import Addproduct from './Addproduct';
-
-
 
 function Product()
 {
@@ -25,7 +22,6 @@ function Product()
           }}
           style={{ marginLeft: "240px" }}
         >
-          <Addproduct />
           <TableP />
         </Box>
         </Box>

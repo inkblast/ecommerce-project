@@ -1,5 +1,5 @@
 import React ,{ useEffect,useState } from 'react';
-//import { useHistory,useParams } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -13,6 +13,7 @@ import {Button} from '@mui/material';
 import axios from 'axios';
 import { Input } from '@mui/material';
 import DoneIcon from '@mui/icons-material/Done';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 //import Grid from '@mui/material/Grid';
 
 function TableP()
@@ -23,7 +24,8 @@ function TableP()
   const [uproduct_name,setProduct_name] = useState("")
   const [uproduct_details,setProduct_details] = useState("")
   const [uquantity, setQuantity] = useState()
-
+  //const [uimage, setImage] = useState()
+  const navigate = useNavigate()
 
     useEffect(()=>{
         fetch('http://localhost:8000/products/list/')
@@ -79,6 +81,7 @@ function TableP()
     }
     return(
         <>
+        <Button style={{backgroundColor:'#448aff', color: 'white',}} variant="contained" onClick={()=>navigate('addproduct')} sx={{ m:3  }} startIcon={<AddShoppingCartIcon />}>Add Product</Button>
             <div>
             <TableContainer component={Paper}>
       <Table style={{
@@ -126,7 +129,7 @@ function TableP()
                 onChange={(e)=>setProduct_details(e.target.value)}
                 />
               </TableCell>
-              <TableCell align="center" width="300px">
+              <TableCell align="center" width="100px">
                 <Input
                 type="text"
                 value={uquantity}
@@ -145,7 +148,7 @@ function TableP()
               <TableCell align="center"  width="150px">{product.category_id}</TableCell>
               <TableCell align="center" width="300px">{product.name}</TableCell>
               <TableCell align="center" width="500px">{product.description}</TableCell>
-              <TableCell align="center" width="300px">{product.quantity}</TableCell>
+              <TableCell align="center" width="100px">{product.quantity}</TableCell>
               <TableCell align="center" sx={{ mx:6 }}><Button color="success" variant="outlined" onClick={()=>updateProduct(product.id,product.category_id)}  startIcon={<EditIcon />}>Update</Button>
                 <Button  color="error" variant="outlined"  onClick={() => deleteProduct(product.id)} startIcon={<ClearIcon />} sx={{ml:2}}>Delete</Button>
               </TableCell>
