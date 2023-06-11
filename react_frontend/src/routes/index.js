@@ -13,7 +13,7 @@ function Routs() {
       <Routes>
         <Route path="/" element={<AdminBoard /> } />
         <Route path="/product" element={<Product /> } />
-        <Route path="/addproduct" element={<Addproduct /> } />
+        <Route path="/product/addproduct" element={<Addproduct /> } />
       </Routes>
     </Router>
     </>

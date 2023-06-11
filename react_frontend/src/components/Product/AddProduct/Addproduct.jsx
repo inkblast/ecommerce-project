@@ -4,9 +4,11 @@ import SecondStep from './SecondStep';
 import {Stepper,StepLabel,Step} from '@mui/material';
 import { multiStepContext } from './StepContext';
 import Box from "@mui/material/Box";
+import Typography from '@mui/material/Typography';
 
+//`calc(100% - ${drawerWidth}px)`
 export default function Addproduct() {
-    const drawerWidth = 240;
+   //const drawerWidth = 240;
 
     const { currentStep} = useContext(multiStepContext)
 
@@ -20,17 +22,23 @@ export default function Addproduct() {
     }
   return (
     <div>
-        iiiiiiiiiiiiiiiiiiiiiiiiiii
+
         <Box
           component="main"
           sx={{
             flexGrow: 1,
             p: 3,
-            width: { sm: `calc(100% - ${drawerWidth}px)` },
+            width: { sm:"800px" },
+            border:3,
+            borderRadius: '16px',
+            borderColor: 'primary.main'
           }}
-          style={{ marginLeft: "240px" }}
+          style={{ marginLeft: "540px",marginTop: "100px" }}
         >
-        <Stepper style={{ width:"20%"}} activestep={currentStep -1} orientation="horizontal">
+          <Typography sx={{paddingLeft:'250px', fontWeight: '700'}} color="primary" variant="h4" gutterBottom>
+        Add Product
+      </Typography>
+        <Stepper style={{ width:"90%", margin:"25px"}} activestep={currentStep -1} orientation="horizontal">
             <Step>
                 <StepLabel></StepLabel>
             </Step>
