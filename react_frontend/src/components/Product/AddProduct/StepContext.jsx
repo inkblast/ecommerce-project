@@ -17,6 +17,7 @@ export default function StepContext() {
         formField.append('description', userData['pdes'])
         formField.append('quantity', userData['qty'])
         formField.append('price', userData['price'])
+        formField.append('sku', userData['sku'])
         formField.append('image', userData['photo'])
         
         await axios({
