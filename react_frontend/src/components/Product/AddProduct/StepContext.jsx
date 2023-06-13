@@ -16,11 +16,12 @@ export default function StepContext() {
         formField.append('name', userData['pname'])
         formField.append('description', userData['pdes'])
         formField.append('quantity', userData['qty'])
+        formField.append('price', userData['price'])
         formField.append('image', userData['photo'])
         
         await axios({
             method: 'post',
-            url: 'http://localhost:8000/products/add/',
+            url: 'http://localhost:8000/products/padd/',
             data: formField
         }).then((response)=>{
             console.log(response.data);

@@ -14,6 +14,8 @@ import axios from 'axios';
 import { Input } from '@mui/material';
 import DoneIcon from '@mui/icons-material/Done';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import CategoryIcon from '@mui/icons-material/Category';
+import Stack from '@mui/material/Stack';
 //import Grid from '@mui/material/Grid';
 
 function TableP()
@@ -24,11 +26,12 @@ function TableP()
   const [uproduct_name,setProduct_name] = useState("")
   const [uproduct_details,setProduct_details] = useState("")
   const [uquantity, setQuantity] = useState()
+  const [uprice , setPrice] = useState()
   //const [uimage, setImage] = useState()
   const navigate = useNavigate()
 
     useEffect(()=>{
-        fetch('http://localhost:8000/products/list/')
+        fetch('http://localhost:8000/products/plist/')
         .then(resp=> resp.json())
         .then(resp => setDetails(resp)
         //.catch(error => console.log(error))
@@ -41,16 +44,19 @@ function TableP()
           setProduct_details(res.data.description)
           setProduct_name(res.data.name)
           setQuantity(res.data.quantity)
+          setPrice(res.data.price)
         })
         setCid(cid);
         setEditId(id);
     }
 
-    const handleUpdate = () => {
+    const handleUpdate = async() => {
       /*let formField = new FormData()
         formField.append('category_id', editCid)
         formField.append('name', uproduct_name)
         formField.append('description', uproduct_details)
+        formField.append('quantity', uquantity)
+        formField.append('price', uprice)
 
         await axios({
             method: 'put',
@@ -60,7 +66,7 @@ function TableP()
             console.log(response.data);
             location.reload();
         })*/
-      axios.put('http://127.0.0.1:8000/products/'+editId, {category_id:editCid ,quantity:uquantity ,name:uproduct_name , description:uproduct_details})
+      axios.put('http://127.0.0.1:8000/products/'+editId, {category_id:editCid ,quantity:uquantity ,name:uproduct_name , description:uproduct_details, price:uprice })
       .then(res => {
         console.log(res);
         setEditId(-1);
@@ -81,8 +87,11 @@ function TableP()
     }
     return(
         <>
-        <Button style={{backgroundColor:'#448aff', color: 'white',}} variant="contained" onClick={()=>navigate('addproduct')} sx={{ m:3  }} startIcon={<AddShoppingCartIcon />}>Add Product</Button>
-            <div>
+          <Stack spacing={6} direction="row" sx={{ m:3}}>
+            <Button style={{backgroundColor:'#448aff', color: 'white', height:'40px'}} variant="contained" onClick={()=>navigate('addproduct')}  startIcon={<AddShoppingCartIcon />}>Add Product</Button>
+            <Button style={{backgroundColor:'#ff9100', color: 'white', height:'40px'}} variant="contained" onClick={()=>navigate('addcategory')}  startIcon={<CategoryIcon />}>Add Category</Button>
+          </Stack>
+          <div>
             <TableContainer component={Paper}>
       <Table style={{
               pl:20,
@@ -94,6 +103,7 @@ function TableP()
             <TableCell align="center" style={{backgroundColor:'#e8eaf6', color: 'black',}}>Category ID</TableCell>
             <TableCell align="center" style={{backgroundColor:'#e8eaf6', color: 'black',}}>Product Name</TableCell>
             <TableCell align="center" style={{backgroundColor:'#e8eaf6', color: 'black',}}>Product Details</TableCell>
+            <TableCell align="center" style={{backgroundColor:'#e8eaf6', color: 'black',}}>Price</TableCell>
             <TableCell align="center" style={{backgroundColor:'#e8eaf6', color: 'black',}}>Qunatity</TableCell>
             <TableCell align="center" style={{backgroundColor:'#e8eaf6', color: 'black',}}>Action</TableCell>
           </TableRow>
@@ -129,6 +139,13 @@ function TableP()
                 onChange={(e)=>setProduct_details(e.target.value)}
                 />
               </TableCell>
+              <TableCell align="center" width="500px">
+                <Input
+                type="text"
+                value={uprice}
+                onChange={(e)=>setPrice(e.target.value)}
+                />
+              </TableCell>
               <TableCell align="center" width="100px">
                 <Input
                 type="text"
@@ -148,6 +165,7 @@ function TableP()
               <TableCell align="center"  width="150px">{product.category_id}</TableCell>
               <TableCell align="center" width="300px">{product.name}</TableCell>
               <TableCell align="center" width="500px">{product.description}</TableCell>
+              <TableCell align="center" width="100px">{product.price}</TableCell>
               <TableCell align="center" width="100px">{product.quantity}</TableCell>
               <TableCell align="center" sx={{ mx:6 }}><Button color="success" variant="outlined" onClick={()=>updateProduct(product.id,product.category_id)}  startIcon={<EditIcon />}>Update</Button>
                 <Button  color="error" variant="outlined"  onClick={() => deleteProduct(product.id)} startIcon={<ClearIcon />} sx={{ml:2}}>Delete</Button>

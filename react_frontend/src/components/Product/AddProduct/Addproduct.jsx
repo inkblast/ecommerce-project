@@ -35,9 +35,7 @@ export default function Addproduct() {
           }}
           style={{ marginLeft: "540px",marginTop: "100px" }}
         >
-          <Typography sx={{paddingLeft:'250px', fontWeight: '700'}} color="primary" variant="h4" gutterBottom>
-        Add Product
-      </Typography>
+          <Typography sx={{paddingLeft:'250px', fontWeight: '700'}} color="primary" variant="h4" gutterBottom>Add Product</Typography>
         <Stepper style={{ width:"90%", margin:"25px"}} activestep={currentStep -1} orientation="horizontal">
             <Step>
                 <StepLabel></StepLabel>
