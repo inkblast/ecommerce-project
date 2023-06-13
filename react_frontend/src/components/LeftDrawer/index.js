@@ -24,9 +24,9 @@ import PersonIcon from '@mui/icons-material/Person';
 import SettingsIcon from '@mui/icons-material/Settings';
 //import Layout from '../../layout/Layout';
 import DashboardIcon from '@mui/icons-material/Dashboard';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+//import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import TreeView from '@mui/lab/TreeView';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
 import TreeItem, { treeItemClasses } from '@mui/lab/TreeItem';  
 import CategoryIcon from '@mui/icons-material/Category';
 import PropTypes from 'prop-types';
@@ -143,12 +143,12 @@ function LeftDrawer() {
             </div>
           <TreeView
             aria-label="multi-select"
-            defaultCollapseIcon={<ExpandMoreIcon />}
-            defaultExpandIcon={<ChevronRightIcon />}
+            //defaultCollapseIcon={<ChevronRightIcon />}
+            //defaultExpandIcon={<ChevronRightIcon />}
             multiSelect
             sx={{ height: 380, flexGrow: 1, maxWidth: 400, overflowY: 'auto' }}
           >
-            <StyledTreeItem nodeId="1" labelText="Product" startIcon={<PostAddIcon />}>
+            <StyledTreeItem nodeId="1" labelText="Product" labelIcon={KeyboardDoubleArrowRightIcon } >
               <StyledTreeItem 
                 labelText="Product"
                 labelIcon={PostAddIcon}
