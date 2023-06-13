@@ -13,7 +13,7 @@ import {Button} from '@mui/material';
 import axios from 'axios';
 import { Input } from '@mui/material';
 import DoneIcon from '@mui/icons-material/Done';
-import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import CategoryIcon from '@mui/icons-material/Category';
 import Stack from '@mui/material/Stack';
 //import Grid from '@mui/material/Grid';
 
@@ -22,15 +22,12 @@ function TableP()
   const [details , setDetails] = useState([])
   const [editId , setEditId] = useState(-1)
   const [editCid , setCid] = useState(-1)
-  const [uproduct_name,setProduct_name] = useState("")
-  const [uproduct_details,setProduct_details] = useState("")
-  const [uquantity, setQuantity] = useState()
-  const [uprice , setPrice] = useState()
+  const [ucategory_name,setCategory_name] = useState("")
   //const [uimage, setImage] = useState()
   const navigate = useNavigate()
 
     useEffect(()=>{
-        fetch('http://localhost:8000/products/plist/')
+        fetch('http://localhost:8000/products/clist/')
         .then(resp=> resp.json())
         .then(resp => setDetails(resp)
         //.catch(error => console.log(error))
@@ -38,12 +35,9 @@ function TableP()
     },[])
 
     const updateProduct = (id,cid) => {
-        axios.get('http://127.0.0.1:8000/products/'+id)
+        axios.get('http://127.0.0.1:8000/products/id='+id)
         .then(res =>{
-          setProduct_details(res.data.description)
-          setProduct_name(res.data.name)
-          setQuantity(res.data.quantity)
-          setPrice(res.data.price)
+          setCategory_name(res.data.name)
         })
         setCid(cid);
         setEditId(id);
@@ -65,7 +59,7 @@ function TableP()
             console.log(response.data);
             location.reload();
         })*/
-      axios.put('http://127.0.0.1:8000/products/'+editId, {category_id:editCid ,quantity:uquantity ,name:uproduct_name , description:uproduct_details, price:uprice })
+      axios.put('http://127.0.0.1:8000/products/id='+editId, {category_id:editCid ,name:ucategory_name })
       .then(res => {
         console.log(res);
         setEditId(-1);
@@ -80,14 +74,14 @@ function TableP()
     const deleteProduct = (id) => {
       const confirm = window.confirm("Would Like To Delete This Product?");
       if(confirm){
-        axios.delete('http://127.0.0.1:8000/products/'+id) 
+        axios.delete('http://127.0.0.1:8000/products/id='+id) 
         location.reload();
       }
     }
     return(
         <>
           <Stack spacing={6} direction="row" sx={{ m:3}}>
-            <Button style={{backgroundColor:'#448aff', color: 'white', height:'40px'}} variant="contained" onClick={()=>navigate('addproduct')}  startIcon={<AddShoppingCartIcon />}>Add Product</Button>
+            <Button style={{backgroundColor:'#448aff', color: 'white', height:'40px'}} variant="contained" onClick={()=>navigate('addcategory')}  startIcon={<CategoryIcon />}>Add Category</Button>
           </Stack>
           <div>
             <TableContainer component={Paper}>
@@ -100,9 +94,6 @@ function TableP()
             <TableCell align="center" style={{backgroundColor:'#e8eaf6', color: 'black',}}>Product ID</TableCell>
             <TableCell align="center" style={{backgroundColor:'#e8eaf6', color: 'black',}}>Category ID</TableCell>
             <TableCell align="center" style={{backgroundColor:'#e8eaf6', color: 'black',}}>Product Name</TableCell>
-            <TableCell align="center" style={{backgroundColor:'#e8eaf6', color: 'black',}}>Product Details</TableCell>
-            <TableCell align="center" style={{backgroundColor:'#e8eaf6', color: 'black',}}>Price</TableCell>
-            <TableCell align="center" style={{backgroundColor:'#e8eaf6', color: 'black',}}>Qunatity</TableCell>
             <TableCell align="center" style={{backgroundColor:'#e8eaf6', color: 'black',}}>Action</TableCell>
           </TableRow>
         </TableHead>
@@ -126,32 +117,11 @@ function TableP()
               <TableCell  align="center" width="300px">
                 <Input
                 type="text"
-                value={uproduct_name}
-                onChange={(e)=>setProduct_name(e.target.value)} 
+                value={ucategory_name}
+                onChange={(e)=>setCategory_name(e.target.value)} 
                 />
               </TableCell>
-              <TableCell align="center" width="500px">
-                <Input
-                type="text"
-                value={uproduct_details}
-                onChange={(e)=>setProduct_details(e.target.value)}
-                />
-              </TableCell>
-              <TableCell align="center" width="500px">
-                <Input
-                type="text"
-                value={uprice}
-                onChange={(e)=>setPrice(e.target.value)}
-                />
-              </TableCell>
-              <TableCell align="center" width="100px">
-                <Input
-                type="text"
-                value={uquantity}
-                onChange={(e)=>setQuantity(e.target.value)}
-                />
-              </TableCell>
-              <TableCell  align="center"><Button color="success" variant="outlined" onClick={()=>handleUpdate()}  startIcon={<DoneIcon />}>Done</Button>
+              <TableCell  align="center"><Button color="success" variant="outlined" onClick={()=>handleUpdate()}  startIcon={<DoneIcon />} width="300px">Done</Button>
               </TableCell>
             </TableRow>
             :
@@ -162,9 +132,6 @@ function TableP()
               <TableCell component="th" scope="row" align="center" width="125px">{product.id}</TableCell>
               <TableCell align="center"  width="150px">{product.category_id}</TableCell>
               <TableCell align="center" width="300px">{product.name}</TableCell>
-              <TableCell align="center" width="500px">{product.description}</TableCell>
-              <TableCell align="center" width="100px">{product.price}</TableCell>
-              <TableCell align="center" width="100px">{product.quantity}</TableCell>
               <TableCell align="center" sx={{ mx:6 }}><Button color="success" variant="outlined" onClick={()=>updateProduct(product.id,product.category_id)}  startIcon={<EditIcon />}>Update</Button>
                 <Button  color="error" variant="outlined"  onClick={() => deleteProduct(product.id)} startIcon={<ClearIcon />} sx={{ml:2}}>Delete</Button>
               </TableCell>

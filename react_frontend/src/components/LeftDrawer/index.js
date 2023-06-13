@@ -163,7 +163,7 @@ function LeftDrawer() {
                 labelIcon={CategoryIcon}
                 color="#1a73e8"
                 bgColor="#e8f0fe"
-                
+                onClick={()=>navigate('/category')}
               />
             </StyledTreeItem>
             <StyledTreeItem nodeId="4" 

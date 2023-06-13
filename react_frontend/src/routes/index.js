@@ -5,6 +5,7 @@ import AdminBoard from '../containers/Dashboard/AdminBoard';
 import Product from "../containers/Product/"
 import Addproduct from '../containers/Product/Addproduct'
 import Addcategory from '../containers/Product/Addcategory'
+import Category from '../containers/Product/Category'
 
 
 function Routs() {
@@ -15,7 +16,8 @@ function Routs() {
         <Route path="/" element={<AdminBoard /> } />
         <Route path="/product" element={<Product /> } />
         <Route path="/product/addproduct" element={<Addproduct /> } />
-        <Route path="/product/addcategory" element={<Addcategory /> } />
+        <Route path="/category/addcategory" element={<Addcategory /> } />
+        <Route path="/category" element={<Category /> } />
       </Routes>
     </Router>
     </>
