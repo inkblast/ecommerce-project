@@ -1,10 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
-import Checkout from './Components/Checkout';
 import { BrowserRouter as Router,Routes,Route } from 'react-router-dom';
-import Delivery from './Components/Delivery/Delivery';
-import Payment from './Components/Payment/Payment';
-import ChangeAddress from './Components/Delivery/ChangeAddress';
+import Delivery from './components/Delivery/Delivery';
+import Payment from './components/Payment/Payment';
+import ChangeAddress from './components/Address/ChangeAddress';
 
 function App() {
   return (
