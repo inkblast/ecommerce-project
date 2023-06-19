@@ -1,4 +1,4 @@
-import SET_PRODUCT_STATUS from '../utils/types.js'
+import { SET_PRODUCT_STATUS } from '../utils/type'
 
 
 const initialState = {
@@ -7,7 +7,7 @@ const initialState = {
   
   const orderManagementReducer= (state = initialState, action) => {
     switch (action.type) {
-      case FETCH_EXAMS_PAPERS:
+      case SET_PRODUCT_STATUS:
         return {
           ...state,
           products: action.data
@@ -17,4 +17,4 @@ const initialState = {
     }
   };
   
-  export default examPaperReducer;
+  export default orderManagementReducer;
