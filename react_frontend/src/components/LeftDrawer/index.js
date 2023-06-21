@@ -29,6 +29,7 @@ import TreeView from '@mui/lab/TreeView';
 import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
 import TreeItem, { treeItemClasses } from '@mui/lab/TreeItem';  
 import CategoryIcon from '@mui/icons-material/Category';
+import DiscountIcon from '@mui/icons-material/Discount';
 import PropTypes from 'prop-types';
 import { styled } from '@mui/material/styles';
 
@@ -165,8 +166,16 @@ function LeftDrawer() {
                 bgColor="#e8f0fe"
                 onClick={()=>navigate('/category')}
               />
+              <StyledTreeItem 
+                nodeId="4" 
+                labelText="Promotion"
+                labelIcon={DiscountIcon}
+                color="#1a73e8"
+                bgColor="#e8f0fe"
+                onClick={()=>navigate('/promotion')}
+              />
             </StyledTreeItem>
-            <StyledTreeItem nodeId="4" 
+            <StyledTreeItem nodeId="5" 
                 labelText="Deliveries" 
                 labelIcon={LocalShippingIcon}
                 color="#1a73e8"
