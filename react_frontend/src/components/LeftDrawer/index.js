@@ -203,6 +203,7 @@ function LeftDrawer() {
               labelIcon={DescriptionIcon}
               color="#1a73e8"
               bgColor="#e8f0fe"
+              onClick={()=>navigate('/stock')}
             />
           </TreeView>
           <Divider />

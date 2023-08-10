@@ -1,0 +1,20 @@
+.mainLineDiv { 
+    height: 1rem;
+    width: 100px;
+    background-color: rgb(194, 238, 238);
+    border-radius: 12px;
+    margin: 1rem;
+ }
+ .childLineDiv {
+    height: 100%;
+    background-color: rgba(32, 148, 243, 0.973);
+    border-radius: 12px;
+    text-align: left;
+ }
+
+ .status {
+    height: 10px;
+    width: 10px;
+    border-radius: 12px;
+    margin: 1rem;
+ }
