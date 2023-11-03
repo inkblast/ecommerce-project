@@ -6,6 +6,7 @@ import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
 import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material/styles';
+import Tshirt from '../assets/blackT.png';
 
 import {fabric} from 'fabric'
 
@@ -38,8 +39,7 @@ const addCanvas = () => {
     backgroundColor: 'rgba(0, 0, 0, 0)',
    
     
-  })
-
+  })                                                                                                           
   setCanvas(newCanvas)
 
  
@@ -104,7 +104,7 @@ const textAdded = ()=>{
                   height:  800,
                   width: 800,
                   backgroundColor:'#1A2027',
-                  backgroundImage:'./white-tshirt.png'
+                  backgroundImage:{Tshirt}
                 }}
               >
                 <Box

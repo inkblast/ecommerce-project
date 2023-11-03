@@ -5,14 +5,14 @@ import { Card, CardMedia, CardContent, Typography,Box } from '@mui/material';
 
 
 const useStyles = makeStyles({
-    card: {
+    card: (cwidth,cheight) =>({
       position: 'relative',
       '&:hover $overlay': {
         opacity: 1,
       },
-      width:'350px',
-      height:'400px'
-    },
+      width:cwidth,
+      height:cheight
+    }),
     overlay: {
       position: 'absolute',
       top: 0,
@@ -37,12 +37,12 @@ const useStyles = makeStyles({
     } ,
   });
 
-function ProductCategoryCard({cardimg,title}){
-    const classes = useStyles();
+function ProductCategoryCard({cardimg,title,height ,width}){
+    const classes = useStyles(width,height);
     return(
         <Box sx={{margin:"10px"}}>
             <Card className={classes.card}>
-      <CardMedia component="img" height="400px" image={cardimg}  />
+      <CardMedia component="img" height="400px" width="1000px" image={cardimg}  />
       <Box className={classes.overlay}>
         <Typography sx={{color:"#fff", fontSize:"42px", fontWeight:"bold"}}>{title}</Typography>
       </Box>

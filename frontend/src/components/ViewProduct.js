@@ -1,13 +1,13 @@
 import React from "react";
 import { Box, IconButton, Typography,Button } from "@mui/material";
 import NavBar from "./NavBar";
-import Link from '@mui/material/Link';
+//import Link from '@mui/material/Link';
 import StarIcon from '@mui/icons-material/Star';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
 import LocalShippingOutlinedIcon from '@mui/icons-material/LocalShippingOutlined';
 import MainPic from "../assets/handsome-attractive-european-man-gray-hoodie-with-hands-pockets-look-pleased-has-good-mood-as-comes-home-after-work-good-looking-male-student-poses.jpg"
-
+import { Link } from 'react-router-dom';
 
 
 
@@ -92,9 +92,12 @@ function ViewProduct(){
 
                         </Box>
                         <Box sx={{display:"flex",margin:"20px 0px 20px 0px"}}>
-                                <Button sx={{borderRadius:"25px", backgroundColor:"#F14A41"}}>
+                            <Link to="..\..\t-shirt\design">
+                            <Button sx={{borderRadius:"25px", backgroundColor:"#F14A41"}}>
                                     <Typography sx={{fontSize:"18px", textTransform:"none", color:"#fff", margin:"0px 10px 0px 10px"}}>Design Now</Typography>
                                 </Button>
+                            </Link>
+                                
                                 <Button sx={{border:"1px solid #F14A41",borderRadius:"25px", marginLeft:"20px"}}>
                                     <Typography sx={{fontSize:"18px", textTransform:"none", color:"#F14A41", margin:"0px 10px 0px 10px"}}>More Details</Typography>
                                 </Button>

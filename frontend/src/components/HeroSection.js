@@ -20,7 +20,7 @@ function HeroSection (){
             </Box>
            
             <Box sx={{marginTop:'30px'}}>
-            <Button sx ={{backgroundColor:"#F14A41",color:"#ffffff",borderRadius:'25px'}}>
+            <Button sx ={{backgroundColor:"#F1826A",color:"#ffffff",borderRadius:'25px'}}>
                 <Typography sx={{fontSize:"16px", textTransform:"none", margin:"5px 20px 5px 20px"}}>
                 Get Started
                 </Typography>
