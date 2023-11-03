@@ -16,7 +16,7 @@ function EditArea(){
 
 
 
-   const styles = {
+  const styles = {
   paperContainer: {
     backgroundImage: `url(./white_tshirt.png)`,
     backgroundSize: 'cover',
@@ -41,6 +41,7 @@ const addCanvas = () => {
   })
 
   setCanvas(newCanvas)
+
  
 }
 
@@ -59,6 +60,8 @@ const imgAdded = () =>{
       canvas.renderAll();
     })
   })
+
+
 }
 
 
@@ -107,6 +110,7 @@ const textAdded = ()=>{
                 <Box
                 sx={{
                   border: '2px dashed black',
+                  
                 }}>
                 <canvas id='canvas' />
                 </Box>
