@@ -31,16 +31,16 @@ function ProductCatelog()
                 </Box>
                 <Box sx={{margin:"0px 90px 0px 90px"}}>
                     <Box sx={{display:"flex"}}>
-                        <ProductCategoryCard cardimg={Men} title="Men's Clothing" />
-                        <ProductCategoryCard cardimg={Women} title="Women's Clothing" />
-                        <ProductCategoryCard cardimg={kid} title="Kid's Clothing" />
+                        <ProductCategoryCard cardimg={Men} title="Men's Clothing" height="400px" width="500px"/>
+                        {/*<ProductCategoryCard cardimg={Women} title="Women's Clothing" />*/}
+                        <ProductCategoryCard cardimg={kid} title="Kid's Clothing" height="400px" width="350px"/>
                         
                     </Box>
                     <Box sx={{display:"flex"}}>
                         
-                        <ProductCategoryCard cardimg={HnL} title="Home & Living" />
-                        <ProductCategoryCard cardimg={Gift} title="Gift" />
-                        <ProductCategoryCard cardimg={Men} title="Accessories" />
+                        <ProductCategoryCard cardimg={HnL} title="Home & Living" height="400px" width="350px" />
+                        <ProductCategoryCard cardimg={Gift} title="Gift" height="400px" width="350px"/>
+                        <ProductCategoryCard cardimg={Men} title="Accessories" height="400px" width="350px" />
                     </Box>
                 </Box>
                 

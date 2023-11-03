@@ -6,6 +6,7 @@ import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
 import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material/styles';
+import Tshirt from '../assets/blackT.png';
 
 import {fabric} from 'fabric'
 
@@ -16,7 +17,7 @@ function EditArea(){
 
 
 
-   const styles = {
+  const styles = {
   paperContainer: {
     backgroundImage: `url(./white_tshirt.png)`,
     backgroundSize: 'cover',
@@ -38,9 +39,9 @@ const addCanvas = () => {
     backgroundColor: 'rgba(0, 0, 0, 0)',
    
     
-  })
-
+  })                                                                                                           
   setCanvas(newCanvas)
+
  
 }
 
@@ -59,6 +60,8 @@ const imgAdded = () =>{
       canvas.renderAll();
     })
   })
+
+
 }
 
 
@@ -101,12 +104,13 @@ const textAdded = ()=>{
                   height:  800,
                   width: 800,
                   backgroundColor:'#1A2027',
-                  backgroundImage:'./white-tshirt.png'
+                  backgroundImage:{Tshirt}
                 }}
               >
                 <Box
                 sx={{
                   border: '2px dashed black',
+                  
                 }}>
                 <canvas id='canvas' />
                 </Box>

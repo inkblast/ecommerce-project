@@ -1,14 +1,11 @@
-import CanvasArea from './CanvasArea';
-import Box from '@mui/material/Box';
-import HeadBar from './components/HeadBar';
-import EditArea from './components/EditArea';
+import WebRoutes from "../src/routes/WebRoutes"
 
 function App() {
   return (
+    
+
     <div className="App">
-       
-      <HeadBar/>
-      <EditArea />
+      <WebRoutes />
     </div>
   );
 }

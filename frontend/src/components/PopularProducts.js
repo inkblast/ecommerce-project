@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 import  Typography  from "@mui/material/Typography";
 import IconButton  from "@mui/material/IconButton";
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import ProductItemCard from "./ProductItemCard";
+import ProductItemCard from "./Card/ProductItemCard/ProductItemCard";
 
 
 function PopularProducts(){
