@@ -5,26 +5,16 @@ import Drawer from '@mui/material/Drawer';
 import AppBar from '@mui/material/AppBar';
 import CssBaseline from '@mui/material/CssBaseline';
 import Toolbar from '@mui/material/Toolbar';
-import List from '@mui/material/List';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
 import Header from '../Header';
-import Link from '@mui/material/Link';
 import PostAddIcon from '@mui/icons-material/PostAdd';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import ReceiptIcon from '@mui/icons-material/Receipt';
 import EqualizerIcon from '@mui/icons-material/Equalizer';
 import EditNoteIcon from '@mui/icons-material/EditNote';
 import DescriptionIcon from '@mui/icons-material/Description';
-import PersonIcon from '@mui/icons-material/Person';
-import SettingsIcon from '@mui/icons-material/Settings';
-//import Layout from '../../layout/Layout';
 import DashboardIcon from '@mui/icons-material/Dashboard';
-//import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import TreeView from '@mui/lab/TreeView';
 import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
 import TreeItem, { treeItemClasses } from '@mui/lab/TreeItem';  
@@ -33,7 +23,6 @@ import DiscountIcon from '@mui/icons-material/Discount';
 import PropTypes from 'prop-types';
 import { styled } from '@mui/material/styles';
 
-//import AdminBoard from '../../containers/Dashboard/AdminBoard';
 
 const drawerWidth = 240;
 
@@ -147,7 +136,7 @@ function LeftDrawer() {
             //defaultCollapseIcon={<ChevronRightIcon />}
             //defaultExpandIcon={<ChevronRightIcon />}
             multiSelect
-            sx={{ height: 380, flexGrow: 1, maxWidth: 400, overflowY: 'auto' }}
+            sx={{ height: 480, flexGrow: 1, maxWidth: 400, overflowY: 'auto' }}
           >
             <StyledTreeItem nodeId="1" labelText="Product" labelIcon={KeyboardDoubleArrowRightIcon } >
               <StyledTreeItem 
@@ -191,6 +180,7 @@ function LeftDrawer() {
               labelIcon={ReceiptIcon}
               color="#1a73e8"
               bgColor="#e8f0fe" 
+              onClick={()=>navigate('/notes')}
             />
             <StyledTreeItem nodeId="8"
               labelText="Order Managment"
@@ -206,23 +196,7 @@ function LeftDrawer() {
               onClick={()=>navigate('/stock')}
             />
           </TreeView>
-          <Divider />
-            <div style={{paddingLeft:'10px'}}>
-                    <span>Account Management</span>
-            </div>
-          <List>
-            {['Profile', 'Settings'].map((text, index) => (
-              <ListItem key={text} disablePadding>
-                <ListItemButton>
-                  <ListItemIcon>
-                    {index == 0 ? <PersonIcon /> : ''}
-                    {index == 1 ? <SettingsIcon /> : ''}
-                  </ListItemIcon>
-                  <Link href="#" underline="none"><ListItemText primary={text} /></Link>
-                </ListItemButton>
-              </ListItem>
-            ))}
-          </List>
+           
         </Box>
       </Drawer>
     </Box>

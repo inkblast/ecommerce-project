@@ -9,6 +9,8 @@ import Category from '../containers/Product/Category'
 import Promotion from '../containers/Product/Promotion'
 import AddPromotion from '../containers/Product/AddPromotion'
 import Stock from '../containers/StockManagement/index'
+import Profile from '../containers/userProfile/index'
+import Notes from '../containers/CNotes/index'
 
 
 
@@ -25,7 +27,8 @@ function Routs() {
         <Route path="/category" element={<Category /> } />
         <Route path="/promotion" element={<Promotion /> } />
         <Route path="/stock" element={<Stock /> } />
-
+        <Route path="/user" element={<Profile /> } />
+        <Route path="/notes" element={<Notes /> } />
       </Routes>
     </Router>
     </div>
