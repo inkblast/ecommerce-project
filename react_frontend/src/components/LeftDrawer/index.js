@@ -74,8 +74,8 @@ function LeftDrawer() {
       <StyledTreeItemRoot
         label={
           <Box sx={{ display: 'flex', alignItems: 'center', pt: 1.5, pb:1.5 , pr: 0,}}>
-            <Box component={LabelIcon} color="inherit" sx={{ mr: 1 }} />
-            <Typography variant="body2" sx={{ fontWeight: 'inherit', flexGrow: 1 }}>
+            <Box component={LabelIcon} color="inherit" sx={{ mr: 1 }}  />
+            <Typography variant="body2" sx={{ fontSize:17, fontWeight: 'inherit', flexGrow: 1 }}>
               {labelText}
             </Typography>
           </Box>
@@ -105,7 +105,7 @@ function LeftDrawer() {
     "/stock-management",
   ];*/
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box sx={{ display: 'flex',backgroundColor:"#edf1f0" }}>
       <CssBaseline />
       <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
         <Header />
@@ -118,18 +118,18 @@ function LeftDrawer() {
           [`& .MuiDrawer-paper`]: { width: drawerWidth, boxSizing: 'border-box' },
         }}
       >
-        <div style={{marginTop:'75px'}}> 
+        <div style={{marginTop:'65px'}} > 
             <Toolbar>
             <DashboardIcon style={{color:"#145DA0",padding:'2px',marginBottom:'6px'}} />
-                <Typography variant="h6" noWrap component="div" gutterBottom>
+                <Typography variant="h6" noWrap component="div" gutterBottom fontFamily={"Segoe UI"}>
                     Admin Dashboard
                 </Typography>
             </Toolbar>
         </div>
         <Divider />
-        <Box sx={{ overflow: 'auto' }}>
+        <Box sx={{ overflow: 'auto'}}>
             <div style={{paddingLeft:'10px'}}>
-                <span>Overview</span>
+                <span style={{fontSize: 20}} > Overview</span>
             </div>
           <TreeView
             aria-label="multi-select"
@@ -140,16 +140,20 @@ function LeftDrawer() {
           >
             <StyledTreeItem nodeId="1" labelText="Product" labelIcon={KeyboardDoubleArrowRightIcon } >
               <StyledTreeItem 
+                fontFamily='-apple-system'
+                fontSize= "13"
                 labelText="Product"
                 labelIcon={PostAddIcon}
                 color="#1a73e8"
                 bgColor="#e8f0fe"
                 nodeId="2"
+                //sx={{fontSize:12}}
                 onClick={()=>navigate('/product')}
                 />
               <StyledTreeItem 
                 nodeId="3" 
                 labelText="Category"
+              
                 labelIcon={CategoryIcon}
                 color="#1a73e8"
                 bgColor="#e8f0fe"
@@ -174,7 +178,9 @@ function LeftDrawer() {
                 labelText="Analysis"
                 labelIcon={EqualizerIcon}
                 color="#1a73e8"
-                bgColor="#e8f0fe" /> 
+                bgColor="#e8f0fe" 
+                onClick={()=>navigate('/analysis')}
+            />
             <StyledTreeItem nodeId="7"
               labelText="Credit Notes"
               labelIcon={ReceiptIcon}

@@ -1,57 +1,66 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ReactApexChart from 'react-apexcharts';
 
-function Review (props) {
+function Review(props) {
+    const { data, color, sales, title } = props;
 
     const options1 = {
-    series: [{
-        data: props.data
-    }],
-    chart: {
-        type: 'area',
-        height: 100,
-        sparkline: {
-        enabled: true
+        series: [{
+            data: data
+        }],
+        chart: {
+            type: 'area',
+            height: 100,
+            sparkline: {
+                enabled: true
+            },
         },
-    },
-    stroke: {
-        curve: 'straight'
-    },
-    fill: {
-        opacity: 0.3,
-    },
-    xaxis: {
-        crosshairs: {
-        width: 1
+        stroke: {
+            curve: 'straight'
         },
-    },
-    yaxis: {
-        min: 0
-    },
-    colors: props.color,
-    title: {
-        text: props.sales,
-        offsetX: 0,
-        style: {
-        fontSize: '24px',
+        fill: {
+            opacity: 0.3,
+        },
+        xaxis: {
+            crosshairs: {
+                width: 1
+            },
+        },
+        yaxis: {
+            min: 0
+        },
+        colors: color,
+        title: {
+            text: sales,
+            offsetX: 0,
+            style: {
+                fontSize: '24px',
+            }
+        },
+        subtitle: {
+            text: title,
+            offsetX: 0,
+            style: {
+                fontSize: '14px',
+            }
         }
-    },
-    subtitle: {
-        text: props.title,
-        offsetX: 0,
-        style: {
-        fontSize: '14px',
-        }
-    }
     };
 
     return (
-      <div className="Review" style={{ backgroundColor: "#DCE6EC",padding:5 }} >
-          <div id="chart-spark1">
-            <ReactApexChart options={options1} series={options1.series} type="area" height={150} width={200}/>
-          </div>
-      </div>
+        <div className="Review" style={{ backgroundColor: "#DCE6EC", padding: 5 }} >
+            <div id="chart-spark1">
+                <ReactApexChart options={options1} series={options1.series} type="area" height={150} width={488} />
+            </div>
+        </div>
     )
-  }
-  
-  export default Review;
+}
+
+Review.propTypes = {
+    data: PropTypes.array.isRequired,
+    color: PropTypes.array.isRequired,
+    sales: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+};
+
+export default Review;

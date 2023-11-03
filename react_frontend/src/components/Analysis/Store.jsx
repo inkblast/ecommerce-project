@@ -23,8 +23,8 @@ function Store() {
   };
 
   return (
-    <div id="chart" style={{ backgroundColor: "#DCE6EC",padding:10,margin:10 }}>
-      <ReactApexChart options={options} series={options.series} type="bar" height={250} width={700} />
+    <div id="chart" style={{ backgroundColor: "#DCE6EC",padding:10,margin:10, marginLeft:15}}>
+      <ReactApexChart options={options} series={options.series} type="bar" height={250} width={1550} />
     </div>
   );
 }

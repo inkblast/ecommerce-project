@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, } from '@mui/material';
-import ReactApexChart from 'react-apexcharts';
+//import ReactApexChart from 'react-apexcharts';
 import Review from './Review';
 import Sales from './Sales';
 import Store from './Store';
@@ -29,7 +29,7 @@ function Charts ()  {
               <Review data={ExpensesData} title={"Expenses"} sales={"$243733"} color={['#404d5a']}/>
             </Box>
             <Box sx={{ p:1 , m:1 }}>
-              <Review data={profitsData} title={"Profits"} sales={"$123223"}/>
+              <Review data={profitsData} title={"Profits"} sales={"$123223"} color={['#404d5a']}/>
             </Box>
           </Box>
         </Box>

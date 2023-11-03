@@ -30,9 +30,9 @@ function index() {
   return (
     <>
          <TableContainer>
-      <Table sx={{ maxWidth: 1050 }} aria-label="simple table">
+      <Table sx={{ maxWidth: 1450 }} aria-label="simple table">
         <TableHead>
-          <TableRow>
+          <TableRow  sx={{backgroundColor: "#d5d9d8"}} >
             <TableCell align="center">Status</TableCell>
             <TableCell>ID</TableCell>
             <TableCell align="left">Name</TableCell>
@@ -45,7 +45,7 @@ function index() {
           {data.map((data) => (
             <TableRow
               key={data.category_id}
-              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+              sx={{ '&:last-child td, &:last-child th': { border: 0 }, backgroundColor:"#DCE6EC" }}
             >
               <TableCell align="center">
                 <div className='status'

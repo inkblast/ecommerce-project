@@ -1,10 +1,10 @@
 import React from 'react'
-import Stock from '../StockManagement/Stock'
+import Charts from '../Analysis/Charts'
 import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
 
 
-function index() {
+function Index() {
     const drawerWidth = 240;
   return (
     <>
@@ -17,13 +17,13 @@ function index() {
             p: 3,
             width: { sm: `calc(100% - ${drawerWidth}px)` },
           }}
-          style={{ marginLeft: "300px",marginTop: "30px" }}
+          style={{ marginLeft: "240px",marginTop: "30px" }}
         >
-          <Stock />
+          <Charts />
         </Box>
         </Box>
     </>
   )
 }
 
-export default index
+export default Index
