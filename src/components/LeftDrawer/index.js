@@ -30,7 +30,7 @@ const drawerWidth = 240;
 function LeftDrawer() {
   const routes = [
     "/product",
-    "/deliveries",
+    "/delivery",
     "/analysis",
     "/credit-notes",
     "/order-management",

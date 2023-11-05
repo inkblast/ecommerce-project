@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import Product from "../../components/Product";
-import Deliveries from "../../components/Deliveries";
+//import Delivery from "../../components/Deliveries";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import Typography from "@mui/material/Typography";
 import { IconButton } from "@mui/material";
@@ -18,8 +18,8 @@ function AdminBoard() {
 
       <Stack direction="row" spacing={2}>
         <Product />
-        <Deliveries />
-        <Deliveries />
+        {/*<Delivery />
+        <Delivery />*/}
       </Stack>
     </Fragment>
   );

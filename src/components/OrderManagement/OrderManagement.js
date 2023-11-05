@@ -40,16 +40,6 @@ class OrderManagement extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      activeItem: {
-        product_id: "",
-        product_name: "",
-        product_quentity: "",
-        product_price: "",
-        cust_name: "",
-        cust_email: "",
-        cust_address: "",
-        cust_phone: "",
-      },
       todoList: [],
       produc: [],
     };
@@ -77,22 +67,6 @@ class OrderManagement extends Component {
   handleStatus(e) {
     const { name, value } = e.target;
     const { todoList } = this.state;
-    //var handleProduct = "false";
-    //console.log("todoList[value-1]", todoList[value - 1]);
-    //.log(value);
-    {
-      /*const { product } = this.props;
-    console.log(name);
-    console.log(value);
-    console.log(product);
-    product.forEach((item) => {
-        if (item.product_id == value.product_id) {
-          // Add your code logic here
-          handleProduct = "true";
-        }
-      });
-    console.log(handleProduct);*/
-    }
     if (todoList[value - 1].order_status == "open") {
       axios
         .patch('http://127.0.0.1:8000/api/Shop_Order/' + value+'/', {
@@ -121,7 +95,7 @@ class OrderManagement extends Component {
     }
     else if(todoList[value - 1].order_status == "closed")
     {
-      axios.post('http://127.0.0.1:8000/api2/Delivered/'+value , {order_status:name})
+      axios.patch('http://127.0.0.1:8000/api2/Delivered/'+ value+'/' , {order_status:name})
     }
   }
   render() {
