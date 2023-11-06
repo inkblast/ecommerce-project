@@ -105,7 +105,8 @@ function LeftDrawer() {
     "/stock-management",
   ];*/
   return (
-    <Box sx={{ display: 'flex',backgroundColor:"#edf1f0" }}>
+
+    <Box sx={{ display: { xs: 'none', md: 'flex' },backgroundColor:"#edf1f0" }}>
       <CssBaseline />
       <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
         <Header />
@@ -118,6 +119,7 @@ function LeftDrawer() {
           [`& .MuiDrawer-paper`]: { width: drawerWidth, boxSizing: 'border-box' },
         }}
       >
+        
         <div style={{marginTop:'65px'}} > 
             <Toolbar>
             <DashboardIcon style={{color:"#145DA0",padding:'2px',marginBottom:'6px'}} />
@@ -173,6 +175,7 @@ function LeftDrawer() {
                 labelIcon={LocalShippingIcon}
                 color="#1a73e8"
                 bgColor="#e8f0fe" 
+                onClick={()=>navigate('/deliver')}
             /> 
             <StyledTreeItem nodeId="6" 
                 labelText="Analysis"
@@ -193,6 +196,7 @@ function LeftDrawer() {
               labelIcon={EditNoteIcon}
               color="#1a73e8"
               bgColor="#e8f0fe"
+              onClick={()=>navigate('order')}
             />
             <StyledTreeItem nodeId="9" 
               labelText="Stock Management"
@@ -206,6 +210,7 @@ function LeftDrawer() {
         </Box>
       </Drawer>
     </Box>
+
   )
 }
 

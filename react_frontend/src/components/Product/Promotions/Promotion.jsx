@@ -11,7 +11,7 @@ function Product()
  return(
   <>
     
-      <Box sx={{ display: "flex" }}>
+      <Box sx={{  display: { xs: 'none', md: 'flex' }}}>
         <CssBaseline />
         <Box
           component="main"
@@ -21,6 +21,20 @@ function Product()
             width: { sm: `calc(100% - ${drawerWidth}px)` },
           }}
           style={{ marginLeft: "240px" }}
+        >
+          <PromotionTable />
+        </Box>
+        </Box>
+        <Box sx={{  display: { xs: 'flex', md: 'none' }}}>
+        <CssBaseline />
+        <Box
+          component="main"
+          sx={{
+            flexGrow: 1,
+            p: 3,
+            width: { sm: `calc(100% - ${drawerWidth}px)` },
+          }}
+          style={{ marginLeft: "0px" }}
         >
           <PromotionTable />
         </Box>

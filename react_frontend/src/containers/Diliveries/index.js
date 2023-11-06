@@ -1,14 +1,14 @@
 import React from 'react'
 import Layout from '../../layout/Layout'
-import Product from '../../components/Product/Product';
+import Deliver from '../../components/Deliveries/index';
 
 
 function index() {
   return (
-      <>
+    <div>
         <Layout/>
-        <Product/>
-      </>
+        <Deliver /> 
+    </div>
   )
 }
 

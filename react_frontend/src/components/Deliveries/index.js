@@ -1,10 +1,7 @@
-import React from "react";
-import { CardActionArea, IconButton } from "@mui/material";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import Typography from "@mui/material/Typography";
-import Divider from "@mui/material/Divider";
-import DeliveryDiningIcon from '@mui/icons-material/DeliveryDining';
+import { Box } from '@mui/material'
+import React from 'react'
+import PropTypes from "prop-types";
+import Toolbar from "@mui/material/Toolbar";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -13,61 +10,73 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 
-function createData(number, date, status) {
-  return { number, date, status};
-}
-
-const rows = [
-  createData(57375453, "08/05", "shipped"),
-  createData(57375454, "08/05", "open"),
-  createData(57375455, "08/05", "canceled"),
-];
-
-function index() {
+function Delivery(props) {
+  const { products } = props;
+  console.log('ado no',products);
+  const drawerWidth = 240;
   return (
-    <div>
-      <Card sx={{ maxWidth: 350 }}>
-        <CardActionArea>
-          <CardContent>
-            <div style={{ display: "flex" }}>
-              <Typography gutterBottom variant="h6" component="div">
-                Last Three Deliveries
-              </Typography>
-              <IconButton style={{ justifyContent: "flex-end" }}>
-                <DeliveryDiningIcon />
-              </IconButton>
-            </div>
-            <Divider />
-            <TableContainer component={Paper}>
-              <Table sx={{ minWidth: 300 }} size="small" aria-label="a dense table">
-                <TableHead>
-                  <TableRow>
-                    <TableCell>Sales Number</TableCell>
-                    <TableCell>Order Date</TableCell>
-                    <TableCell >Status</TableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {rows.map((row) => (
-                    <TableRow
-                      key={row.name}
-                      sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                    >
-                      <TableCell component="th" scope="row">
-                        {row.number}
-                      </TableCell>
-                      <TableCell >{row.date}</TableCell>
-                      <TableCell >{row.status}</TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </TableContainer>
-          </CardContent>
-        </CardActionArea>
-      </Card>
-    </div>
-  );
+    <Box sx={{ display: "flex" }}>
+      <Box
+        component="main"
+        sx={{
+          flexGrow: 1,
+          p: 3,
+          width: { sm: `calc(100% - ${drawerWidth}px)` },
+        }}
+        style={{ marginLeft: "240px" }}
+      >
+      <h1>delevery Comming Soon........!</h1>
+      
+       <Toolbar />
+        <TableContainer component={Paper}>
+          <Table
+            sx={{ minWidth: 300 }}
+            size="small"
+            aria-label="a dense table"
+          >
+            <TableHead>
+              <TableRow>
+                <TableCell>No</TableCell>
+                <TableCell>product_name</TableCell>
+                <TableCell>product_quentity</TableCell>
+                <TableCell>product_price</TableCell>
+                <TableCell>cust_name</TableCell>
+                <TableCell>cust_email</TableCell>
+                <TableCell>cust_address</TableCell>
+                <TableCell>cust_phone</TableCell>
+                <TableCell>date_created</TableCell>
+                <TableCell>Status</TableCell>
+              </TableRow>
+            </TableHead>
+            {console.log('kamal2',products)}
+            <TableBody>
+              {products.map((item, id) => (
+                <TableRow
+                  key={id}
+                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                >
+                  <TableCell>{id + 1}</TableCell>
+                  <TableCell>{item.product_name}</TableCell>
+                  <TableCell>{item.product_quentity}</TableCell>
+                  <TableCell>{item.product_price}</TableCell>
+                  <TableCell>{item.cust_name}</TableCell>
+                  <TableCell>{item.cust_email}</TableCell>
+                  <TableCell>{item.cust_address}</TableCell>
+                  <TableCell>{item.cust_phone}</TableCell>
+                  <TableCell>{item.date_created}</TableCell>
+                  <TableCell>{item.order_status}</TableCell>
+                </TableRow>
+              ))}
+              </TableBody>
+          </Table>
+              </TableContainer> 
+    </Box>
+    </Box>
+  )
 }
+Delivery.propTypes = {
+  products: PropTypes.array.isRequired,
+};
 
-export default index;
+
+export default Delivery

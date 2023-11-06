@@ -3,10 +3,12 @@ import Header from '../components/Header'
 import LeftDrawer from '../components/LeftDrawer'
 
 function Layout() {
+
+
   return (
     <div>
         <Header />
-        <LeftDrawer />
+        <LeftDrawer /> 
     </div>
   )
 }

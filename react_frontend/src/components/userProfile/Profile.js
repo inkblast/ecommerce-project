@@ -8,7 +8,7 @@ function Profile() {
     const drawerWidth = 240;
   return (
     <>
-        <Box sx={{ display: "flex" }}>
+        <Box sx={{  display: { xs: 'none', md: 'flex' }}}>
         <CssBaseline />
         <Box
           component="main"
@@ -18,6 +18,20 @@ function Profile() {
             width: { sm: `calc(100% - ${drawerWidth}px)` },
           }}
           style={{ marginLeft: "240px",marginTop: "30px" }}
+        >
+          <User />
+        </Box>
+        </Box>
+        <Box sx={{  display: { xs: 'flex', md: 'none' }}}>
+        <CssBaseline />
+        <Box
+          component="main"
+          sx={{
+            flexGrow: 1,
+            p: 3,
+            width: { sm: `calc(100% - ${drawerWidth}px)` },
+          }}
+          style={{ marginLeft: "0px",marginTop: "30px" }}
         >
           <User />
         </Box>

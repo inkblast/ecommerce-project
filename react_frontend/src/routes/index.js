@@ -12,6 +12,8 @@ import Stock from '../containers/StockManagement/index'
 import Profile from '../containers/userProfile/index'
 import Notes from '../containers/CNotes/index'
 import Analysis from '../containers/Analysis/index'
+import Order from '../containers/OrderMangement/index'
+import Deliver from '../containers/Diliveries/index'
 
 
 
@@ -31,6 +33,8 @@ function Routs() {
         <Route path="/user" element={<Profile /> } />
         <Route path="/notes" element={<Notes /> } />
         <Route path="/analysis" element={<Analysis /> } />
+        <Route path="/order" element={<Order /> } />
+        <Route path="/deliver" element={<Deliver /> } />
       </Routes>
     </Router>
     </div>
