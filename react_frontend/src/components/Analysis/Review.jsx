@@ -1,5 +1,6 @@
 import React from "react";
 import ReactApexChart from "react-apexcharts";
+import PropTypes from 'prop-types';
 
 function Review(props) {
   const options1 = {
@@ -56,5 +57,12 @@ function Review(props) {
     />
   );
 }
+
+Review.propTypes = {
+    data: PropTypes.array.isRequired,
+    color: PropTypes.array.isRequired,
+    sales: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+};
 
 export default Review;

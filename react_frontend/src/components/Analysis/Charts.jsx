@@ -20,7 +20,7 @@ function Charts() {
   };
 
   return (
-    <div sx={{ padding: "1em", margin: "1em" }}>
+    <div style={{ padding: "1em", margin: "1em" }}>
       <div style={divStyle}>
         <Box sx={{ width: "100%",marginRight:"1.5em" }}>
           <Review
