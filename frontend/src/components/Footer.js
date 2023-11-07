@@ -5,6 +5,7 @@ import Grid from "@mui/material/Grid";
 import InstagramIcon from '@mui/icons-material/Instagram';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import FacebookIcon from '@mui/icons-material/Facebook';
+import { Link } from "@material-ui/core";
 
 
 function Footer(){
@@ -19,7 +20,7 @@ function Footer(){
                             <Typography sx={{fontWeight:"bold",fontSize:"22px"}}>Company</Typography>
                         </Box>
                         <Box sx={{marginTop:"10px"}}>
-                            <Typography sx={{fontSize:"16px"}}>About Us</Typography>
+                            <Link href={'/about_us'}><Typography sx={{fontSize:"16px"}}>About Us</Typography></Link>
                             <Typography sx={{fontSize:"16px"}}>How It Works</Typography>
                             <Typography sx={{fontSize:"16px"}}>Fan Club</Typography>
                         </Box>

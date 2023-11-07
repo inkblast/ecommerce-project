@@ -5,10 +5,12 @@ import { Button } from "@mui/material";
 import pic from '../assets/slider pic1.png';
 import Badge from '@mui/material/Badge';
 import MailIcon from '@mui/icons-material/Mail';
-
+//import { useHref } from "react-router-dom";
+//import { useHistory } from 'react-router-dom';
+import { Grid, Link } from "@mui/material";
 
 function HeroSection (){
-
+    //const dispatch = useHistory();
     return(
         <Box sx={{display:'flex', alignItems:'center',backgroundColor:"#FFCCC9"}}>
             <Box width={'350px'} sx={{marginLeft:'150px'}} >
@@ -21,9 +23,11 @@ function HeroSection (){
            
             <Box sx={{marginTop:'30px'}}>
             <Button sx ={{backgroundColor:"#F1826A",color:"#ffffff",borderRadius:'25px'}}>
+                <Link href={'/T-shirt'}>
                 <Typography sx={{fontSize:"16px", textTransform:"none", margin:"5px 20px 5px 20px"}}>
                 Get Started
                 </Typography>
+                </Link>
             </Button>
            
             </Box>

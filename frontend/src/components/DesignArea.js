@@ -1,144 +1,466 @@
-import React, { useState, useRef, useEffect } from "react";
-import { Box, Typography,Button } from "@mui/material";
-import { makeStyles } from "@mui/styles";
-import { fabric } from "fabric";
-import BlackTshirt from '../assets/blackT.png'
-import IconButton from "@mui/material/IconButton";
-import CircleIcon from '@mui/icons-material/Circle';
+import React, { useState, useEffect } from "react";
+import {
+  Box,
+  Button,
+  CardContent,
+  Container,
+  FormControlLabel,
+  RadioGroup,
+  Radio,
+  Typography,
+} from "@mui/material";
+import Card from "@mui/material/Card";
+import CardMedia from "@mui/material/CardMedia";
 import Grid from "@mui/material/Grid";
+import TextField from "@mui/material/TextField";
+import Paper from "@mui/material/Paper";
+import { styled } from "@mui/material/styles";
+import blackTshirt from "../assets/black tshirt.jpg";
+import { Link, useParams } from "react-router-dom";
+import axios from "axios";
 
+import { fabric } from "fabric";
+import HeadBar from "./HeadBar";
 
-import HeadBar from './HeadBar';
-import OptionPanel from "./OptionPanel";
+function EditArea() {
+  const params = useParams("examPaperId");
+  const [product, setProduct] = useState([]);
+  console.log("params", params);
+  useEffect(() => {
+    (async () => {
+      try {
+        const result = await axios.get(
+          `https://fakestoreapi.com/products/${params.id}`
+        );
+        console.log(result.data);
+        setProduct(result.data);
+      } catch (error) {
+        console.log(error);
+      }
+    })();
+  }, []);
+  const [canvas, setCanvas] = useState();
+  const [text, setText] = useState("");
+  const [color, setColor] = useState("black");
+  const [backgroundImage, setBackgroundImage] = useState(
+    `url(./white_tshirt.png)`
+  );
 
-const useStyles = makeStyles({
-
-  container:{
-    display:'flex',
-   position:'relative'
-  },
-
-
-  editAreaContainer:{
-    width:'60%',
-    height:450,
-    backgroundColor:"orange",
-    justifyContent:"center",
-    alignItems:"center"
-  },
-
-  optionPanelContainer:{
-
-   width:'40%',
-    backgroundColor:"blue"
-  },
-
-  canvasStyle:{
-
-    border:'1px dashed black',
-    position:'absolute',
-    width: 150,
-    height: 200,
-    top:50,
-    left:100
-  }
-   
-  });
-
-function DesignArea(){
-
-    
-
-    const classes = useStyles();
-    const [canvas,setCanvas] = useState();
-    const [text,setText] = useState('');
-    const canvasRef = useRef(null);
-
-    
-/*useEffect(()=>{
-
-  addCanvas();
-},[]) */
-
- const addCanvas = () => {
-  const element = document.getElementById('canvas')
-    const newcanvas = new fabric.Canvas(element, {
-      containerClass:'classes.canvasStyle'
+  const styles = {
+    paperContainer: {
+      backgroundImage: `url(${product.image})`,
+      backgroundSize: "cover",
+      width: "50%",
+      height: "100%",
+      marginLeft:'100px',
+      backgroundPosition: "center",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+    },
+  };
+  // useEffect(() => {
+  //   addCanvas();
+  //   console.log("Inside the useEffect");
+  // }, []);
+  const addCanvas = () => {
+    const newCanvas = new fabric.Canvas("canvas", {
+      height: 250,
+      width: 250,
+      backgroundColor: "rgba(0, 0, 0, 0)",
     });
 
-    setCanvas(newcanvas);
-    console.log(element)
-    
+    setCanvas(newCanvas);
   };
 
-
-  
-    
-const imgAdded = () =>{
-
-    const reader  = new FileReader();
-    const inputFile = document.getElementById('addDesign');
-    console.log(inputFile);
+  const imgAdded = () => {
+    const reader = new FileReader();
+    const inputFile = document.getElementById("myImg");
     const file = inputFile.files[0];
     reader.readAsDataURL(file);
-    reader.addEventListener('load',()=>{
-  
-      fabric.Image.fromURL(reader.result,img => {
+    reader.addEventListener("load", () => {
+      fabric.Image.fromURL(reader.result, (img) => {
         canvas.add(img);
         canvas.renderAll();
-      })
-    })
-  
-  
-  }
-  
-  
-  const handleTextChange = (event) =>{
-  
+      });
+    });
+  };
+  const handleColor = (e) => {
+    setColor(e.target.value);
+  };
+  const handleTextChange = (event) => {
     setText(event.target.value);
-  
-  
-  }
-  const textAdded = ()=>{
-  
-    const newText = new fabric.Text(text,{
+    console.log("text", text);
+  };
+  const textAdded = () => {
+    const newText = new fabric.Text(text, {
       left: 50,
       top: 50,
-      fontFamily: 'Arial',
+      fontFamily: "Arial",
       fontSize: 24,
-      fill: 'black'
-    })
-  
+      fill: `${color}`,
+    });
     canvas.add(newText);
     canvas.renderAll();
-  
-  }
+  };
 
+  const saveImageToDevice = () => {
+    if (canvas) {
+      const imageDataURL = canvas.toDataURL({ format: "png" });
+      const a = document.createElement("a");
+      a.href = imageDataURL;
+      a.download = "edited_image.png";
+      a.click();
+    }
+  };
+  // const saveCompositeImage = () => {
+  //   if (canvas && backgroundImage) {
+  //     const compositeCanvas = new fabric.StaticCanvas();
+  //     compositeCanvas.setWidth(backgroundImage.width);
+  //     compositeCanvas.setHeight(backgroundImage.height);
 
+  //     // Add the background image to the composite canvas
+  //     compositeCanvas.add(backgroundImage);
+
+  //     // Add the edited content (from your canvas) to the composite canvas
+  //     const editedImage = new fabric.Image(canvas.toDataURL(), {
+  //       left: 0,
+  //       top: 0,
+  //     });
+  //     compositeCanvas.add(editedImage);
+
+  //     // Create a data URL for the composite image
+  //     const compositeDataURL = compositeCanvas.toDataURL({
+  //       format: "png",
+  //       quality: 1.0,
+  //     });
+
+  //     // Create a download link for the composite image
+  //     const a = document.createElement("a");
+  //     a.href = compositeDataURL;
+  //     a.download = "composite_image.png";
+  //     a.click();
+  //   }
+  // };
   return (
-    <Box>
-    <HeadBar />
-    <Box className={classes.container}>
-      <Box className={classes.editAreaContainer}>
-       {/* <img
-        
-        src ={BlackTshirt}
-        
-  />*/}
-        <canvas ref={canvasRef} id='canvas' className={classes.canvasStyle}  />
-      </Box>
-      <Box className={classes.optionPanelContainer}>
-        <OptionPanel imgAdded={imgAdded}/>
-      </Box>
-    </Box>
-
-    <Button onClick={addCanvas}>Add canvas</Button>
-    
-      
-    
-    </Box>
+    <div>
+      {/* <Container maxWidth="sm">
+        <Box sx={{ bgcolor: "#cfe8fc", height: "600px", width: "600px" }}>
+          <Card sx={{ backgroundColor: "transparent", border: "none" }}>
+            <CardMedia
+              sx={{ height: 400, mt: 20 }}
+              image="./white_tshirt.png"
+            />
+          </Card>
+        </Box>
+      </Container>
+      */}
+      <HeadBar />
+      <Grid container spacing={2} sx={{ marginTop: "50px" }}>
+        <Grid item xs={8}>
+          <Paper
+            style={styles.paperContainer}
+            sx={{
+              height: 600,
+              width: 600,
+              backgroundColor: "#1A2027",
+              backgroundImage: ``,
+            }}
+          >
+            <Box
+              sx={{
+                border: "2px dashed black",
+              }}
+            >
+              <canvas id="canvas" />
+            </Box>
+          </Paper>
+        </Grid>
+        <Grid item xs={4}>
+          <Card
+            style={{
+              alignContent: "center",
+              justifyContent: "center",
+              marginTop: "50px",
+              marginRight: "30px",
+            }}
+          >
+            <CardContent>
+              <div
+                style={{
+                  border: "1px dotted black",
+                  padding: "5px",
+                  borderRadius: "5px",
+                  margin: "3px",
+                }}
+              >
+                <Typography>Choos Colour</Typography>
+              </div>
+              <div
+                style={{
+                  border: "1px dotted black",
+                  padding: "5px",
+                  borderRadius: "5px",
+                  margin: "3px",
+                  display: "flex",
+                  flexDirection: "row", // Display children horizontally
+                  alignItems: "center", // Center align the children vertically
+                  backgroundColor: "#EEEDE7",
+                }}
+              >
+                <RadioGroup
+                  aria-label="color"
+                  name="color"
+                  value={color}
+                  onChange={handleColor}
+                  style={{ display: "flex", flexDirection: "row" }}
+                >
+                  <FormControlLabel
+                    value="black"
+                    control={<Radio style={{ color: "black" }} />}
+                    label="Black"
+                    style={{ marginRight: "10px" }} // Add spacing between button and label
+                  />
+                  <FormControlLabel
+                    value="green"
+                    control={<Radio style={{ color: "green" }} />}
+                    label="Green"
+                    style={{ marginRight: "10px" }}
+                  />
+                  <FormControlLabel
+                    value="white"
+                    control={<Radio style={{ color: "white" }} />}
+                    label="White"
+                    style={{ marginRight: "10px" }}
+                  />
+                  <FormControlLabel
+                    value="blue"
+                    control={<Radio style={{ color: "blue" }} />}
+                    label="Blue"
+                    style={{ marginRight: "10px" }}
+                  />
+                </RadioGroup>
+              </div>
+              <div
+                style={{
+                  border: "1px dotted black",
+                  padding: "5px",
+                  borderRadius: "5px",
+                  margin: "3px",
+                  textAlign: "center",
+                }}
+              >
+                <Button onClick={addCanvas}>Add canvas </Button>
+              </div>
+              <div
+                style={{
+                  padding: "5px",
+                  margin: "3px",
+                }}
+              >
+                <TextField
+                  label=""
+                  id="myImg"
+                  type="file"
+                  accept="/image*"
+                  onChange={imgAdded}
+                  style={{ width: "100%" }}
+                />
+              </div>
+              <div
+                style={{
+                  padding: "5px",
+                  margin: "3px",
+                }}
+              >
+                <TextField
+                  id="myText"
+                  label="Text Input"
+                  type="text"
+                  onChange={handleTextChange}
+                  style={{ width: "100%" }}
+                />
+              </div>
+              <div
+                style={{
+                  border: "1px dotted black",
+                  padding: "5px",
+                  borderRadius: "5px",
+                  margin: "3px",
+                  textAlign: "center",
+                }}
+              >
+                <Button onClick={textAdded}>Add Text</Button>
+              </div>
+            </CardContent>
+          </Card>
+          <Card sx={{ marginTop: "5px" }}>
+            <CardContent>
+              <div
+                style={{
+                  border: "1px dotted black",
+                  padding: "5px",
+                  borderRadius: "5px",
+                  margin: "3px",
+                  textAlign: "center",
+                  backgroundColor: "#FFA384",
+                }}
+              >
+                <Button onClick={textAdded} sx={{ color: "white" }}>
+                  Add to Cart
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+          <Card sx={{ marginTop: "5px" }}>
+            <CardContent>
+              <div
+                style={{
+                  border: "1px dotted black",
+                  padding: "5px",
+                  borderRadius: "5px",
+                  margin: "3px",
+                  textAlign: "center",
+                }}
+              >
+                <Button onClick={saveImageToDevice}>Save to Device</Button>
+              </div>
+            </CardContent>
+          </Card>
+        </Grid>
+      </Grid>
+    </div>
   );
 }
 
+export default EditArea;
 
-export default DesignArea;
+// import React, { useState, useRef, useEffect } from "react";
+// import { Box, Typography,Button } from "@mui/material";
+// import { makeStyles } from "@mui/styles";
+// import { fabric } from "fabric";
+// import BlackTshirt from '../assets/blackT.png'
+// import IconButton from "@mui/material/IconButton";
+// import CircleIcon from '@mui/icons-material/Circle';
+// import Grid from "@mui/material/Grid";
+
+// import HeadBar from './HeadBar';
+// import OptionPanel from "./OptionPanel";
+
+// const useStyles = makeStyles({
+
+//   container:{
+//     display:'flex',
+//    position:'relative'
+//   },
+
+//   editAreaContainer:{
+//     width:'60%',
+//     height:450,
+//     backgroundColor:"orange",
+//     justifyContent:"center",
+//     alignItems:"center"
+//   },
+
+//   optionPanelContainer:{
+
+//    width:'40%',
+//     backgroundColor:"blue"
+//   },
+
+//   canvasStyle:{
+
+//     border:'1px dashed black',
+//     position:'absolute',
+//     width: 150,
+//     height: 200,
+//     top:50,
+//     left:100
+//   }
+
+//   });
+
+// function DesignArea(){
+
+//     const classes = useStyles();
+//     const [canvas,setCanvas] = useState();
+//     const [text,setText] = useState('');
+//     const canvasRef = useRef(null);
+
+// /*useEffect(()=>{
+
+//   addCanvas();
+// },[]) */
+
+//  const addCanvas = () => {
+//   const element = document.getElementById('canvas')
+//     const newcanvas = new fabric.Canvas(element, {
+//       containerClass:'classes.canvasStyle'
+//     });
+
+//     setCanvas(newcanvas);
+//     console.log(element)
+
+//   };
+
+// const imgAdded = () =>{
+
+//     const reader  = new FileReader();
+//     const inputFile = document.getElementById('addDesign');
+//     console.log(inputFile);
+//     const file = inputFile.files[0];
+//     reader.readAsDataURL(file);
+//     reader.addEventListener('load',()=>{
+
+//       fabric.Image.fromURL(reader.result,img => {
+//         canvas.add(img);
+//         canvas.renderAll();
+//       })
+//     })
+
+//   }
+
+//   const handleTextChange = (event) =>{
+
+//     setText(event.target.value);
+
+//   }
+//   const textAdded = ()=>{
+
+//     const newText = new fabric.Text(text,{
+//       left: 50,
+//       top: 50,
+//       fontFamily: 'Arial',
+//       fontSize: 24,
+//       fill: 'black'
+//     })
+
+//     canvas.add(newText);
+//     canvas.renderAll();
+
+//   }
+
+//   return (
+//     <Box>
+//     <HeadBar />
+//     <Box className={classes.container}>
+//       <Box className={classes.editAreaContainer}>
+//        {/* <img
+
+//         src ={BlackTshirt}
+
+//   />*/}
+//         <canvas ref={canvasRef} id='canvas' className={classes.canvasStyle}  />
+//       </Box>
+//       <Box className={classes.optionPanelContainer}>
+//         <OptionPanel imgAdded={imgAdded}/>
+//       </Box>
+//     </Box>
+
+//     <Button onClick={addCanvas}>Add canvas</Button>
+
+//     </Box>
+//   );
+// }
+
+// export default DesignArea;
