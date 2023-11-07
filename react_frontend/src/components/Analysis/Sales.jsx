@@ -78,9 +78,9 @@ function Sales() {
   };
 
   return (
-    <div className="Sales" style={{ backgroundColor: "#DCE6EC",padding:10 ,margin:10 , marginLeft:15}}>
-      <ReactApexChart options={options} series={options.series} type="line" height={250} width={1550} />
-    </div>
+    // <div className="Sales" style={{ backgroundColor: "#DCE6EC", padding: 10, margin: "0 auto", maxWidth: "100%" }}>
+  <ReactApexChart options={options} series={options.series} type="line" height={"100%"} width={"100%"} />
+// </div>
   );
 }
 

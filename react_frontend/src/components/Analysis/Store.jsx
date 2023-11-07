@@ -23,9 +23,9 @@ function Store() {
   };
 
   return (
-    <div id="chart" style={{ backgroundColor: "#DCE6EC",padding:10,margin:10, marginLeft:15}}>
-      <ReactApexChart options={options} series={options.series} type="bar" height={250} width={1550} />
-    </div>
+    // <div id="chart" style={{ backgroundColor: "#DCE6EC", padding: 10, margin: "0 auto", maxWidth: "100%" }}>
+      <ReactApexChart options={options} series={options.series} type="bar" height={"100%"} width={"100%"} />
+    // </div>  
   );
 }
 
